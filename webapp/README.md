@@ -1,1 +1,1 @@
-React + TypeScript + Vite
+Vite, React, Typescript, Express, Trpc
