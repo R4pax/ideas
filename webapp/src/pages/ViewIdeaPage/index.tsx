@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { trpc } from '../../lib/trpc'
 import { ViewIdeaRouteParams } from '../../lib/routes'
+import css from './index.module.scss'
+import { Segment } from '../../components/Segment'
 
 export const ViewIdeaPage = () => {
   const { id } = useParams() as ViewIdeaRouteParams
@@ -13,10 +15,8 @@ export const ViewIdeaPage = () => {
   if (!data.idea) return <span>Idea not found</span>
 
   return (
-    <div>
-      <h1>{data.idea.name}</h1>
-      <p>{data.idea.description}</p>
-      <div dangerouslySetInnerHTML={{ __html: data.idea.text }} />
-    </div>
+    <Segment title={data.idea.name} description={data.idea.description}>
+      <div className={css.text} dangerouslySetInnerHTML={{ __html: data.idea.text }} />
+    </Segment>
   )
 }
